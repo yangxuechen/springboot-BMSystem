@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户首页</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/base/base.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/messages_zh.min.js"></script>
+    <script src="/scripts/user/returnBook.js"></script>
+</head>
+<body>
+
+<div class="top">
+    <div class="dropdown" style="float: right">
+        <button class="dropbtn"><b th:text="${session.user.getUserName()}"></b></button>
+        <div class="dropdown-content">
+            <a href="#">功能1</a>
+            <a href="#">功能2</a>
+            <a href="/userLogOut">退出</a>
+        </div>
+
+    </div>
+</div>
+<ul>
+    <li id="click_1"><a href="#">借阅管理</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun1" class="hidden"><a href="/userBorrowingBooksPage?pageNum=1">借书记录</a></li>
+        <li id="fun2" class="hidden"><a href="/borrowingPage">借阅书籍</a></li>
+
+    </div>
+    <li id="click_2"><a href="#">书籍管理</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun3" style="background-color: #555"><a href="/userReturnBooksPage">归还书籍</a></li>
+        <li id="fun4" ><a href="/findBookPage">查询书籍</a></li>
+    </div>
+    <li id="click_3"><a href="#">个人信息</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun5" class="hidden"><a href="/userMessagePage">我的信息</a></li>
+        <li id="fun6" class="hidden"><a href="#">功能6</a></li>
+    </div>
+    <li id="click_4"><a href="#">帮助</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun7" class="hidden"><a href="#">功能7</a></li>
+        <li id="fun8" class="hidden"><a href="#">功能8</a></li>
+    </div>
+</ul>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">用户还书</h3>
+    <form id="returnBookForm" action="#" method="post">
+        <label>请输入书籍编号</label><br>
+    <input id="bookId" type="text" name="bookId"><br><br>
+    <input id="btn1" type="submit" value="确认还书" style="background-color: #aaaaaa;color: white;">
+    </form>
+</div>
+</body>
+</html>
+
+
+
+

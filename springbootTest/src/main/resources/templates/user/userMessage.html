@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户首页</title>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/css/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="/css/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="/css/user/updateUser.css">
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/messages_zh.min.js"></script>
+    <script src="/scripts/jquery-ui.min.js"></script>
+    <script src="/scripts/user/updateUser.js"></script>
+    <script src="/scripts/base/base.js"></script>
+</head>
+<body>
+
+<div class="top">
+    <div class="dropdown" style="float: right">
+        <button class="dropbtn"><b th:text="${session.user.getUserName()}"></b></button>
+        <div class="dropdown-content">
+            <a href="#">功能1</a>
+            <a href="#">功能2</a>
+            <a href="/userLogOut">退出</a>
+        </div>
+
+    </div>
+</div>
+<ul>
+    <li id="click_1"><a href="#">借阅管理</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun1" class="hidden"><a href="/userBorrowingBooksPage?pageNum=1">借书记录</a></li>
+        <li id="fun2" class="hidden"><a href="/borrowingPage">借阅书籍</a></li>
+
+    </div>
+    <li id="click_2"><a href="#">书籍管理</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun3" class="hidden"><a href="/userReturnBooksPage">归还书籍</a></li>
+        <li id="fun4" class="hidden"><a href="/findBookPage">查询书籍</a></li>
+    </div>
+    <li id="click_3"><a href="#">个人信息</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun5" style="background-color: #555"><a href="/userMessagePage">我的信息</a></li>
+        <li id="fun6" ><a href="#">功能6</a></li>
+    </div>
+    <li id="click_4"><a href="#">帮助</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun7" class="hidden"><a href="#">功能7</a></li>
+        <li id="fun8" class="hidden"><a href="#">功能8</a></li>
+    </div>
+</ul>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">个人信息</h3>
+    <table>
+        <tr>
+            <th>用户id</th>
+            <th>用户姓名</th>
+            <th>用户邮箱</th>
+            <th>用户密码</th>
+        </tr>
+        <tr>
+            <td><b th:text="${session.user.getUserId()}"></b></td>
+            <td><b th:text="${session.user.getUserName()}"></b></td>
+            <td><b th:text="${session.user.getUserEmail()}"></b></td>
+            <td><b th:text="${session.user.getUserPwd()}"></b></td>
+        </tr>
+    </table>
+    <br>
+    <button id="create-user" style="position: absolute; right: 40px;background-color: #aaaaaa;">修改信息</button>
+    <!--<p>这里有一个问题，就是修改用户信息后，session中的user对象还是以前的信息</p>-->
+    <div id="dialog-form" title="修改信息">
+    <p class="validateTips">所有的表单字段都是必填的。</p>
+
+    <form id="updateUserform">
+    <fieldset>
+    <label for="name">名字</label>
+    <input type="text" name="userName" id="name" class="text ui-widget-content ui-corner-all">
+    <label for="email">邮箱</label>
+    <input type="text" name="UserEmail" id="email" value="" class="text ui-widget-content ui-corner-all">
+    <label for="password">密码</label>
+    <input type="password" name="userPwd" id="password" value="" class="text ui-widget-content ui-corner-all">
+    </fieldset>
+    </form>
+    </div>
+</div>
+</body>
+</html>

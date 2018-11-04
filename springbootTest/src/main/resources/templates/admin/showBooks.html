@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/admin/showBooks.js"></script>
+</head>
+<body>
+
+<div class="top">
+    <div class="dropdown" style="float: right">
+        <button class="dropbtn">admin</button>
+        <div class="dropdown-content">
+            <a href="#">功能1</a>
+            <a href="#">功能2</a>
+            <a href="/adminLogOut">退出</a>
+        </div>
+
+    </div>
+</div>
+<ul>
+    <li id="click_1"><a href="#">书籍管理</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun1" ><a href="/addBookPage">录入新书</a></li>
+        <li id="fun2"><a href="/addCategoryPage?pageNum=1">新建类别</a></li>
+        <li id="fun2"  style="background-color: #555;"><a href="/showBooksPage">查询书籍</a></li>
+    </div>
+    <li id="click_2"><a href="#">用户管理</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun3" class="hidden"><a href="/showUsersPage?pageNum=1">查询用户</a></li>
+        <li id="fun4" class="hidden"><a href="/addUserPage">新增用户</a></li>
+    </div>
+    <li id="click_3"><a href="#">借阅信息</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun5" class="hidden"><a href="/allBorrowBooksRecordPage?pageNum=1">所有记录</a></li>
+        <li id="fun6" class="hidden"><a href="#">个人记录</a></li>
+    </div>
+    <li id="click_4"><a href="#">帮助</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun7" class="hidden"><a href="#">功能7</a></li>
+        <li id="fun8" class="hidden"><a href="#">功能8</a></li>
+    </div>
+</ul>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <div style="float: left;width: 50%;height: 100%"><!--左半部分-->
+        <h3 style="text-align: left">查询书籍</h3>
+        <label>按类别查找</label>
+        <form action="/showBooksResultPageByCategoryId" id="bookCategoryForm">
+            <select id="bookCategory" name="bookCategory">
+                <!--<option>小说</option>-->
+                <!--<option>历史</option>-->
+            </select><br><br>
+             <input type="text" name="pageNum" value="1" style="display: none">
+            <input type="submit" value="查找">
+        </form>
+    </div>
+    <div style="float: left;width: 50%;height: 100%"><!--右半部分-->
+        <h3 style="text-align: center">查询结果</h3>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>书名</th>
+                <th>作者</th>
+                <th>出版社</th>
+                <th>状态</th>
+            </tr>
+            <tr th:each="book:${page.getList()}">
+                <td><label th:text="${book.getBookId()}"></label></td>
+                <td><label th:text="${book.getBookName()}"></label></td>
+                <td><label th:text="${book.getBookAuthor()}"></label></td>
+                <td><label th:text="${book.getBookPublish()}"></label></td>
+                <td><label th:text="${book.getIsExist()}"></label></td>
+            </tr>
+        </table>
+
+        <br>
+        <div style="position:absolute;right: 110px ">
+            <label id="lab1" th:text="${page.getPageNum()}">1</label>/<label id="lab2" th:text="${page.getPageCount()}">1</label>
+        </div>
+
+        <a id="prePage" href="/addCategoryPage?pageNum=1" th:href="@{/showBooksResultPageByCategoryId(pageNum=${page.getPageNum()-1},bookCategory=${bookCategory})}" style="position: absolute; right: 140px;background-color: #aaaaaa">上一页</a>
+        <a id="nextPage" href="/addCategoryPage?pageNum=2" th:href="@{/showBooksResultPageByCategoryId(pageNum=${page.getPageNum()+1},bookCategory=${bookCategory})}" style="position: absolute; right: 60px;background-color: #aaaaaa">下一页</a>
+    </div>
+</div>
+</body>
+</html>
+
+

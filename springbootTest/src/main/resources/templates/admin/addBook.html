@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/messages_zh.min.js"></script>
+    <script src="/scripts/admin/addBook.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="top">
+    <div class="dropdown" style="float: right">
+        <button class="dropbtn">admin</button>
+        <div class="dropdown-content">
+            <a href="#">功能1</a>
+            <a href="#">功能2</a>
+            <a href="/adminLogOut">退出</a>
+        </div>
+
+    </div>
+</div>
+<ul>
+    <li id="click_1"><a href="#">书籍管理</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun1" style="background-color: #555;"><a href="/addBookPage">录入新书</a></li>
+        <li id="fun2" ><a href="/addCategoryPage?pageNum=1">新建类别</a></li>
+        <li id="fun2" ><a href="/showBooksPage">查询书籍</a></li>
+    </div>
+    <li id="click_2"><a href="#">用户管理</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun3" class="hidden"><a href="/showUsersPage?pageNum=1">查询用户</a></li>
+        <li id="fun4" class="hidden"><a href="/addUserPage">新增用户</a></li>
+    </div>
+    <li id="click_3"><a href="#">借阅信息</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun5" class="hidden"><a href="/allBorrowBooksRecordPage?pageNum=1">所有记录</a></li>
+        <li id="fun6" class="hidden"><a href="#">个人记录</a></li>
+    </div>
+    <li id="click_4"><a href="#">帮助</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun7" class="hidden"><a href="#">功能7</a></li>
+        <li id="fun8" class="hidden"><a href="#">功能8</a></li>
+    </div>
+</ul>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">添加书籍</h3>
+    <form id="addBookForm" action="#">
+    <label>书 名</label><br>
+    <input id="bookName" type="text" name="bookName"><br>
+    <label>作 者</label><br>
+    <input id="bookAuthor" type="text" name="bookAuthor"><br>
+    <label>出版社</label><br>
+    <input id="bookPublish" type="text" name="bookPublish"><br>
+    <label>类 别</label><br>
+    <select id="bookCategory" name="bookCategory">
+    <!--<option>小说</option>-->
+    <!--<option>历史</option>-->
+    </select><br>
+    <label>价 格</label><br>
+    <input id="bookPrice" type="text" name="bookPrice"><br>
+    <label>简 介</label><br>
+    <input id="bookIntroduction" type="text" name="bookIntroduction"><br><br>
+    <input id="btn1" type="submit" value="添加">
+    </form>
+
+</div>
+</body>
+</html>
