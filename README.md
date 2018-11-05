@@ -11,6 +11,6 @@ springboot+mybatis+mysql+thymeleaf+jquery构建的小型图书借阅管理系统
 3.html+css  
 
 **项目架构**  
-![项目架构图](https://github.com/yangxuechen/springboot-BMSystem/blob/master/resource/images/project.png =800x600)
+![项目架构图](https://github.com/yangxuechen/springboot-BMSystem/blob/master/resource/images/project.png)
 
 
